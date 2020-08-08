@@ -134,7 +134,7 @@ var objects = "Volvo";
     const loading = document.getElementById('loading')
     const responseDiv = document.getElementById('response')
     const canvas = document.getElementById('result-canvas')
-    
+
     var formdata = new FormData(form)
     const url = '/api/fasterrcnn/predict/'
 
@@ -166,7 +166,7 @@ var objects = "Volvo";
       loading.style.display = 'none'
     }
   }
-  
+
   const formextract = function(form) {
     const loading = document.getElementById('loading')
     const responseDiv = document.getElementById('response')
@@ -174,7 +174,7 @@ var objects = "Volvo";
     const th = document.getElementById('prob-threshold')
 
     var formdata = new FormData(form)
-    formdata.append("th", 100)
+    formdata.append("th", th)
     const url = '/api/fasterrcnn/extract/'
 
     const xhr = new XMLHttpRequest()
@@ -204,8 +204,8 @@ var objects = "Volvo";
 
   document.addEventListener('DOMContentLoaded', function() {
    const form = document.getElementById('image-form')
-  
-   
+
+
    document
     .getElementById('button-luminoth1')
     .addEventListener('click', event => {
