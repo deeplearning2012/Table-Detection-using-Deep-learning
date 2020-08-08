@@ -104,7 +104,7 @@ def extract(model_name):
             coordinates = obj['bbox']
             print (coordinates)
             cropped = img.crop( ( coordinates[0], coordinates[1], coordinates[2], coordinates[3] ) )
-            file = "c:\\temp\\" +str(obj['prob']) +".jpg"
+            file = "/tmp/luminoth/" +str(obj['prob']) +".jpg"
             cropped.save(file)
             print (file)
             print (image_to_string(Image.open(file)))
