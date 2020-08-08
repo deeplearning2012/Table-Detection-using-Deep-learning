@@ -171,7 +171,7 @@ var objects = "Volvo";
     const loading = document.getElementById('loading')
     const responseDiv = document.getElementById('response')
     const canvas = document.getElementById('result-canvas')
-    const th = document.getElementById('prob-threshold')
+    const th = document.getElementById('prob-threshold').value;
 
     var formdata = new FormData(form)
     formdata.append("th", th)
