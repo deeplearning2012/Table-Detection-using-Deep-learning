@@ -10,7 +10,7 @@ from luminoth.tools.checkpoint import get_checkpoint_config
 from luminoth.utils.config import get_config, override_config_params
 from luminoth.utils.predicting import PredictorNetwork
 from luminoth.vis import vis_objects
-import cv2 
+import cv2
 from pytesseract import image_to_string
 
 
@@ -29,10 +29,10 @@ def get_image():
     b = cv2.distanceTransform(img, distanceType=cv2.DIST_L2, maskSize=5)
     g = cv2.distanceTransform(img, distanceType=cv2.DIST_L1, maskSize=5)
     r = cv2.distanceTransform(img, distanceType=cv2.DIST_C, maskSize=5)
-    
+
     # merge the transformed channels back to an image
     transformed_image = cv2.merge((b, g, r))
-    
+
     return transformed_image
 
 
@@ -75,7 +75,7 @@ def predict(model_name):
     global ouputObjects
     ouputObjects = objects
     objects = objects[:total_predictions]
-    
+
     #objects = objects[:total_predictions]
     #objects = jsonify({'objects': objects})
     #data  = json.load(objects)
@@ -103,7 +103,7 @@ def extract(model_name):
         if (obj['prob'] > (int(thres)/100)):
             coordinates = obj['bbox']
             print (coordinates)
-            cropped = img.crop( ( coordinates[0], coordinates[1], coordinates[2], coordinates[3] ) ) 
+            cropped = img.crop( ( coordinates[0], coordinates[1], coordinates[2], coordinates[3] ) )
             file = "c:\\temp\\" +str(obj['prob']) +".jpg"
             cropped.save(file)
             print (file)
@@ -112,7 +112,7 @@ def extract(model_name):
             print (s)
     return s
 
-    
+
 def start_network(config):
     global PREDICTOR_NETWORK
     try:
@@ -121,7 +121,7 @@ def start_network(config):
         # An error occurred loading the model; interrupt the whole server.
         tf.logging.error(e)
         _thread.interrupt_main()
-     
+
 
 
 @click.command(help='Start basic web application.')
@@ -132,12 +132,12 @@ def start_network(config):
 @click.option('--port', default=5000, help='Port to listen to.')
 @click.option('--debug', is_flag=True, help='Set debug level logging.')
 def web(config_files, checkpoint, override_params, host, port, debug):
-    config_files = "D:\\Sargunan\\903c4acef42b\\config.yml"
+    config_files = "~/.luminoth/checkpoints/e1c2565b51e9/config.yml"
     if debug:
         tf.logging.set_verbosity(tf.logging.DEBUG)
     else:
         tf.logging.set_verbosity(tf.logging.INFO)
-    checkpoint = "903c4acef42b"
+    checkpoint = "e1c2565b51e9"
     if checkpoint:
         config = get_checkpoint_config(checkpoint)
     elif config_files:
@@ -171,4 +171,4 @@ def web(config_files, checkpoint, override_params, host, port, debug):
 
 web()
 
-    
+
