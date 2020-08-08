@@ -132,12 +132,12 @@ def start_network(config):
 @click.option('--port', default=5000, help='Port to listen to.')
 @click.option('--debug', is_flag=True, help='Set debug level logging.')
 def web(config_files, checkpoint, override_params, host, port, debug):
-    config_files = "~/.luminoth/checkpoints/e1c2565b51e9/config.yml"
+    config_files = "~/.luminoth/checkpoints/aad6912e94d9/config.yml"
     if debug:
         tf.logging.set_verbosity(tf.logging.DEBUG)
     else:
         tf.logging.set_verbosity(tf.logging.INFO)
-    checkpoint = "e1c2565b51e9"
+    checkpoint = "aad6912e94d9"
     if checkpoint:
         config = get_checkpoint_config(checkpoint)
     elif config_files:
