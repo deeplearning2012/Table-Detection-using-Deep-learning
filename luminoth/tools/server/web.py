@@ -71,7 +71,7 @@ def predict(model_name):
 
     img = Image.open(image.stream).convert('RGB')
     #vis_objects(np.array(image_array), objects).save("c:\\temp\\data.png")
-    vis_objects(np.array(img), objects).save("c:\\temp\\data.png")
+    vis_objects(np.array(img), objects).save("/tmp/luminoth/data.png")
     global ouputObjects
     ouputObjects = objects
     objects = objects[:total_predictions]
