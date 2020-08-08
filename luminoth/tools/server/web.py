@@ -99,6 +99,7 @@ def extract(model_name):
     img = Image.open(image.stream).convert('RGB')
     #vis_objects(np.array(image_array), objects).save("c:\\temp\\data.png")
     s = ""
+    print(ouputObjects)
     for obj in ouputObjects:
         if (obj['prob'] > (int(thres)/100)):
             coordinates = obj['bbox']
